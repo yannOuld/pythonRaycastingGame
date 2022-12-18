@@ -79,7 +79,7 @@ class AnimatedSprite(SpriteObject):
             self.animation_time_prev = time_now
             self.animation_trigger = True
 
-    def get_images(selfself, path):
+    def get_images(self, path):
         images = deque()
         for file_name in os.listdir(path):
             if os.path.isfile(os.path.join(path, file_name)):

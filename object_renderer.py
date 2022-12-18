@@ -15,6 +15,10 @@ class ObjectRenderer:
                              for i in range(11)]
         self.digits = dict(zip(map(str, range(11)), self.digit_images))
         self.game_over_image = self.get_texture('ressources/textures/sky/gameover.png', RES)
+        self.win_image = self.get_texture('ressources/textures/sky/win.png', RES)
+
+    def win(self):
+        self.screen.blit(self.win_image, (0, 0))
 
     def draw(self):
         self.draw_background()

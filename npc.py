@@ -15,7 +15,7 @@ class NPC(AnimatedSprite):
         self.walk_images = self.get_images(self.path + '/walk')
 
         self.attack_dist = randint(3, 3)
-        self.speed = 0.07
+        self.speed = 0.015
         self.size = 10
         self.health = 100
         self.attack_damage = 10
@@ -164,7 +164,7 @@ class NPC(AnimatedSprite):
                 player_dist_v = depth_vert
                 break
             if tile_vert in self.game.map.world_map:
-                wall_dist_v =depth_vert
+                wall_dist_v = depth_vert
                 break
             x_vert += dx
             y_vert += dy
@@ -179,7 +179,7 @@ class NPC(AnimatedSprite):
 
 
 class SoldierNPC(NPC):
-    def __init__(self, game, path='ressources/textures/npc/soldier/0.png', pos=(3, 13.5), scale=1.0, shift=0.25, animated_time=180):
+    def __init__(self, game, path='ressources/textures/npc/soldier/0.png', pos=(3, 13.5), scale=1.0, shift=0.20, animated_time=180):
         super().__init__(game, path, pos, scale, shift, animated_time)
 
 
@@ -189,7 +189,7 @@ class CacoDemonNPC(NPC):
         self.attack_dist = 1.0
         self.health = 150
         self.attack_damage = 10
-        self.speed = 0.02
+        self.speed = 0.009
         self.accuracy = 0.4
 
 
@@ -199,5 +199,5 @@ class CyberDemonNPC(NPC):
         self.attack_dist = 4.0
         self.health = 200
         self.attack_damage = 15
-        self.speed = 0.05
+        self.speed = 0.005
         self.accuracy = 0.3

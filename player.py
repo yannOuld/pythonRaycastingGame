@@ -11,11 +11,11 @@ class Player:
         self.attack = False
         self.health = PLAYER_MAX_HEALTH
         self.rel = 0
-        self.health_recovery_delay = 700
+        self.health_recovery_delay = 900
         self.time_prev = pg.time.get_ticks()
 
     def recovery_health(self):
-        if self.check_health_recovery_delay() and self.health > PLAYER_MAX_HEALTH:
+        if self.check_health_recovery_delay() and self.health < PLAYER_MAX_HEALTH:
             self.health += 1
 
     def check_health_recovery_delay(self):
@@ -23,7 +23,12 @@ class Player:
         if time_now - self.time_prev > self.health_recovery_delay:
             self.time_prev = time_now
             return  True
-
+    def check_win(self):
+        if self.game.player.map_pos == EXIT_POS:
+            self.game.object_renderer.win()
+            pg.display.flip()
+            pg.time.delay(1500)
+            self.game.new_game()
     def check_game_over(self):
         if self.health < 1:
             self.game.object_renderer.game_over()
@@ -96,6 +101,7 @@ class Player:
         self.movement()
         self.mouse_control()
         self.recovery_health()
+        self.check_win()
 
     @property
     def pos(self):
